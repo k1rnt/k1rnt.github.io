@@ -3,6 +3,6 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://k1rnt.me",
-  outDir: "docs",
+  outDir: "dist",
   integrations: [tailwind()],
 });
