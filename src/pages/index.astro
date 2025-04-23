@@ -1,0 +1,74 @@
+---
+const title = "k1rnt - Security Engineer";
+const description = "Security Engineer / Software Engineer / CTF Player";
+const ogImage = "/icon.png";
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="bg-slate-100 font-sans min-h-screen bg-no-repeat bg-cover bg-center" style="background-image: url('/background.webp')">
+    <div class="backdrop-blur-sm backdrop-saturate-150 bg-white/70 min-h-screen py-16 px-6">
+      <main class="max-w-3xl mx-auto bg-white/90 rounded-2xl shadow-xl p-10">
+        <img src="/icon.png" alt="Icon" class="w-24 h-24 rounded-full mx-auto mb-6 border shadow-md" loading="lazy" />
+        <h1 class="text-5xl font-extrabold mb-4 text-center">k1rnt</h1>
+        <p class="mb-8 text-lg text-gray-700 text-center">Security Engineer & Software Developer passionate about offensive security and CTFs.</p>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2 border-b pb-1">Jobs</h2>
+          <ul class="list-disc list-inside space-y-1">
+            <li>2015/11 ~ 2016/12: SWE at part-time job</li>
+            <li>2020/01 ~ 2020/04: SWE at part-time job</li>
+            <li>2020/05 ~ 2022/02: SWE at full-time employee</li>
+            <li>2022/02 ~ 2023/08: SWE at <a href="https://stafes.co.jp/" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">STAR FESTIVAL</a></li>
+            <li>2023/09 ~ 2024/10: Security Engineer at <a href="https://3-shake.com/" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">3-shake</a></li>
+            <li>2024/11 ~ current: Security Engineer at <a href="https://flatt.tech" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">GMO Flatt Security</a></li>
+          </ul>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2 border-b pb-1">Skills</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-xl font-medium">Language</h3>
+              <ul class="list-disc list-inside">
+                <li>Scala (Play)</li>
+                <li>PHP (Laravel)</li>
+                <li>TypeScript</li>
+                <li>Golang</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium">Expertise</h3>
+              <ul class="list-disc list-inside">
+                <li>Software Engineering</li>
+                <li>Vulnerability assessments</li>
+                <li>Security Research</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold mb-2 border-b pb-1">Links</h2>
+          <ul class="list-disc list-inside">
+            <li><a href="https://github.com/k1rnt" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Github</a></li>
+            <li><a href="https://x.com/k1rnt" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
+            <li><a href="https://app.hackthebox.com/profile/1415870" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">HackTheBox</a></li>
+            <li><a href="https://blog.k1rnt.me" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
