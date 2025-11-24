@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@astrojs/tailwind": "^5.0.0",
-        "astro": "^4.7.0"
+        "astro": "^5.16.0"
     },
     "devDependencies": {
         "@iconify-json/mdi": "^1.2.3",
