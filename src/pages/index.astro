@@ -3,6 +3,56 @@ import { Icon } from 'astro-icon/components';
 const title = "k1rnt - Security Engineer";
 const description = "Security Engineer / Software Engineer / CTF Player";
 const ogImage = "/icon.png";
+const credits = [
+  {
+    title: "CVE-2026-33810 Case-Sensitive DNS Name Constraint Bypass in Go crypto/x509",
+    links: [
+      "https://www.cve.org/CVERecord?id=CVE-2026-33810",
+      "https://pkg.go.dev/vuln/GO-2026-4866",
+      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
+      "https://flatt.tech/cve/2026-33810",
+    ],
+  },
+  {
+    title: "x/net/quic: remote panic via short dstConnID in retry token validation",
+    links: [
+      "https://github.com/golang/go/issues/78292",
+    ],
+  },
+  {
+    title: "Unauthenticated Path Traversal -> Arbitrary File Read (Repository & Host OS)",
+    links: [
+      "https://bughunters.google.com/reports/vrp/ZqsiiwS5f/report",
+    ],
+  },
+];
+const media = [
+  {
+    title: "実務で担当するまでに独学した、攻撃者視点のセキュリティ",
+    links: [
+      "https://note.com/flatt_security/n/nb91c25832e7c?magazine_key=m13febbcd01c3",
+    ],
+  },
+  {
+    title: "3名のOSWE合格記と資格取得支援について - セキュリティエンジニア鼎談",
+    links: [
+      "https://note.com/flatt_security/n/n7f452420249c?magazine_key=m13febbcd01c3",
+    ],
+  },
+  {
+    title: "Hello, Flattmate!｜セキュリティエンジニア てぃー",
+    links: [
+      "https://note.com/flatt_security/n/nf0b85a5ea355",
+    ],
+  },
+  {
+    title: "攻めと守りで理解するPHPアプリケーションのセキュリティ：生成AI時代のXSSとその対策",
+    links: [
+      "https://developers.gmo.jp/technology/66864/",
+      "https://speakerdeck.com/flatt_security/gong-me-to-shou-ri-deli-jie-suru-php-apurikesiyon",
+    ],
+  },
+];
 ---
 <html lang="en">
   <head>
@@ -65,6 +115,46 @@ const ogImage = "/icon.png";
           <ul class="list-disc list-inside space-y-1">
             <li>OSWE (OffSec Web Expert) - October 2025</li>
             <li>Driver's License - December 2019</li>
+          </ul>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2 border-b pb-1">Credits</h2>
+          <ul class="space-y-4">
+            {credits.map((item) => (
+              <li>
+                <p class="font-medium text-gray-900">{item.title}</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-sm break-all">
+                  {item.links.map((link) => (
+                    <li>
+                      <a href={link} class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2 border-b pb-1">Media</h2>
+          <ul class="space-y-4">
+            {media.map((item) => (
+              <li>
+                <p class="font-medium text-gray-900">{item.title}</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-sm break-all">
+                  {item.links.map((link) => (
+                    <li>
+                      <a href={link} class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </section>
 
