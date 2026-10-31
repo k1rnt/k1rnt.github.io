@@ -4,15 +4,6 @@ import { Icon } from 'astro-icon/components';
 const title = "k1rnt - Red Team & Security Research";
 const description = "Red Team & Security Research";
 const ogImage = "/icon.png";
-const typeStyles: Record<string, string> = {
-  "CVE": "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
-  "Bug Report": "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-  "Bug Bounty": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
-  "Achievement": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
-  "Interview": "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-400",
-  "Article": "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400",
-  "Talk": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400",
-};
 const credits = [
   {
     type: "CVE",
@@ -171,10 +162,7 @@ const media = [
           <div class="grid gap-3">
             {credits.map((item) => (
               <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-700/40 p-4 sm:p-5">
-                <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <span class={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${typeStyles[item.type]}`}>{item.type}</span>
-                  {item.badge && <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">{item.badge}</span>}
-                </div>
+                {item.badge && <p class="text-xs text-gray-500 dark:text-gray-400 font-mono mb-1">{item.badge}</p>}
                 <p class="font-medium text-gray-900 dark:text-gray-100 mb-3 text-pretty">{item.title}</p>
                 <div class="flex flex-wrap gap-2">
                   {item.links.map((link) => (
@@ -194,9 +182,7 @@ const media = [
           <div class="grid gap-3">
             {media.map((item) => (
               <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-700/40 p-4 sm:p-5">
-                <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <span class={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${typeStyles[item.type]}`}>{item.type}</span>
-                </div>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">{item.type}</p>
                 <p class="font-medium text-gray-900 dark:text-gray-100 mb-3 text-pretty">{item.title}</p>
                 <div class="flex flex-wrap gap-2">
                   {item.links.map((link) => (
