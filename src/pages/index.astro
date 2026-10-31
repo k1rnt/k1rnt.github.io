@@ -1,68 +1,90 @@
 ---
 import '../styles/global.css';
 import { Icon } from 'astro-icon/components';
-const title = "k1rnt - Security Engineer";
-const description = "Security Engineer / Software Engineer / CTF Player";
+const title = "k1rnt - Red Team & Security Research";
+const description = "Red Team & Security Research";
 const ogImage = "/icon.png";
+const typeStyles: Record<string, string> = {
+  "CVE": "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+  "Bug Report": "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
+  "Bug Bounty": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
+  "Achievement": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
+  "Interview": "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-400",
+  "Article": "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400",
+  "Talk": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400",
+};
 const credits = [
   {
-    title: "CVE-2026-33810 Case-Sensitive DNS Name Constraint Bypass in Go crypto/x509",
+    type: "CVE",
+    badge: "CVE-2026-33810",
+    title: "Case-Sensitive DNS Name Constraint Bypass in Go crypto/x509",
     links: [
-      "https://www.cve.org/CVERecord?id=CVE-2026-33810",
-      "https://pkg.go.dev/vuln/GO-2026-4866",
-      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
-      "https://flatt.tech/cve/2026-33810",
+      { label: "CVE Record", url: "https://www.cve.org/CVERecord?id=CVE-2026-33810" },
+      { label: "Go Advisory", url: "https://pkg.go.dev/vuln/GO-2026-4866" },
+      { label: "golang-announce", url: "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU" },
+      { label: "Flatt Security", url: "https://flatt.tech/cve/2026-33810" },
     ],
   },
   {
-    title: "x/net/quic: remote panic via short dstConnID in retry token validation",
+    type: "Bug Report",
+    badge: "x/net/quic",
+    title: "Remote panic via short dstConnID in retry token validation",
     links: [
-      "https://github.com/golang/go/issues/78292",
+      { label: "GitHub Issue", url: "https://github.com/golang/go/issues/78292" },
     ],
   },
   {
-    title: "Unauthenticated Path Traversal -> Arbitrary File Read (Repository & Host OS)",
+    type: "Bug Bounty",
+    badge: "Google VRP",
+    title: "Unauthenticated Path Traversal → Arbitrary File Read (Repository & Host OS)",
     links: [
-      "https://bughunters.google.com/reports/vrp/ZqsiiwS5f/report",
+      { label: "Bug Hunters", url: "https://bughunters.google.com/reports/vrp/ZqsiiwS5f/report" },
     ],
   },
   {
-    title: "Blink CSSOM: renderer stack overflow via deeply nested CSSMathSum",
+    type: "Bug Report",
+    badge: "Blink CSSOM",
+    title: "Renderer stack overflow via deeply nested CSSMathSum",
     links: [
-      "https://issues.chromium.org/u/2/issues/517550063",
-    ],
-  },
-  {
-    title: "Hack The Box Omniscient Rank",
-    links: [
-      "https://labs.hackthebox.com/achievement/badge/1415870/219",
+      { label: "Chromium Issue", url: "https://issues.chromium.org/u/2/issues/517550063" },
     ],
   },
 ];
 const media = [
   {
+    type: "Interview",
     title: "実務で担当するまでに独学した、攻撃者視点のセキュリティ",
     links: [
-      "https://note.com/flatt_security/n/nb91c25832e7c?magazine_key=m13febbcd01c3",
+      { label: "note.com", url: "https://note.com/flatt_security/n/nb91c25832e7c?magazine_key=m13febbcd01c3" },
     ],
   },
   {
+    type: "Interview",
     title: "3名のOSWE合格記と資格取得支援について - セキュリティエンジニア鼎談",
     links: [
-      "https://note.com/flatt_security/n/n7f452420249c?magazine_key=m13febbcd01c3",
+      { label: "note.com", url: "https://note.com/flatt_security/n/n7f452420249c?magazine_key=m13febbcd01c3" },
     ],
   },
   {
+    type: "Interview",
     title: "Hello, Flattmate!｜セキュリティエンジニア てぃー",
     links: [
-      "https://note.com/flatt_security/n/nf0b85a5ea355",
+      { label: "note.com", url: "https://note.com/flatt_security/n/nf0b85a5ea355" },
     ],
   },
   {
+    type: "Article",
+    title: "Kubernetes Attack Surface",
+    links: [
+      { label: "Flatt Security Blog", url: "https://blog.flatt.tech/entry/kubernetes-attack-surface" },
+    ],
+  },
+  {
+    type: "Talk",
     title: "攻めと守りで理解するPHPアプリケーションのセキュリティ：生成AI時代のXSSとその対策",
     links: [
-      "https://developers.gmo.jp/technology/66864/",
-      "https://speakerdeck.com/flatt_security/gong-me-to-shou-ri-deli-jie-suru-php-apurikesiyon",
+      { label: "GMO Developers", url: "https://developers.gmo.jp/technology/66864/" },
+      { label: "Speaker Deck", url: "https://speakerdeck.com/flatt_security/gong-me-to-shou-ri-deli-jie-suru-php-apurikesiyon" },
     ],
   },
 ];
@@ -103,7 +125,7 @@ const media = [
 
         <img src="/icon.png" alt="Icon" class="w-24 h-24 rounded-full mx-auto mb-6 border dark:border-slate-600 shadow-md" loading="lazy" />
         <h1 class="text-5xl font-extrabold mb-4 text-center dark:text-white">k1rnt</h1>
-        <p class="mb-8 text-lg text-gray-700 dark:text-gray-300 text-center text-pretty">Security Engineer & Software Developer passionate about offensive security and CTFs.</p>
+        <p class="mb-8 text-lg text-gray-700 dark:text-gray-300 text-center text-pretty">Red Team & Security Research</p>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold mb-2 border-b dark:border-slate-600 pb-1 dark:text-white">Jobs</h2>
@@ -133,50 +155,60 @@ const media = [
         <section class="mb-8">
           <h2 class="text-2xl font-semibold mb-2 border-b dark:border-slate-600 pb-1 dark:text-white">Certifications</h2>
           <ul class="list-disc list-inside space-y-1 dark:text-gray-300">
-            <li>Certified Red Team Professional (CRTP) - June 2026</li>
+            <li>CRTE (Cloud Red Team Expert) - October 2026</li>
+            <li>AzRTE (Azure Red Team Expert) - October 2026</li>
+            <li>GRTE (GCP Red Team Expert) - October 2026</li>
+            <li>ARTE (AWS Red Team Expert) - September 2026</li>
+            <li>CRTP (Certified Red Team Professional) - June 2026</li>
             <li>OSWE (OffSec Web Expert) - October 2025</li>
+            <li><a href="https://labs.hackthebox.com/achievement/badge/1415870/219" class="text-blue-600 dark:text-blue-400 underline" target="_blank" rel="noopener noreferrer">Hack The Box Omniscient Rank</a></li>
             <li>Driver's License - December 2019</li>
           </ul>
         </section>
 
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-2 border-b dark:border-slate-600 pb-1 dark:text-white">Credits</h2>
-          <ul class="space-y-4">
+          <h2 class="text-2xl font-semibold mb-4 border-b dark:border-slate-600 pb-1 dark:text-white">Credits</h2>
+          <div class="grid gap-3">
             {credits.map((item) => (
-              <li>
-                <p class="font-medium text-gray-900 dark:text-gray-100">{item.title}</p>
-                <ul class="list-disc list-inside mt-2 space-y-1 text-sm break-all">
+              <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-700/40 p-4 sm:p-5">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${typeStyles[item.type]}`}>{item.type}</span>
+                  {item.badge && <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">{item.badge}</span>}
+                </div>
+                <p class="font-medium text-gray-900 dark:text-gray-100 mb-3 text-pretty">{item.title}</p>
+                <div class="flex flex-wrap gap-2">
                   {item.links.map((link) => (
-                    <li class="dark:text-gray-400">
-                      <a href={link} class="text-blue-600 dark:text-blue-400 underline" target="_blank" rel="noopener noreferrer">
-                        {link}
-                      </a>
-                    </li>
+                    <a href={link.url} class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-600/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-500 transition-colors" target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                      <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
                   ))}
-                </ul>
-              </li>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-2 border-b dark:border-slate-600 pb-1 dark:text-white">Media</h2>
-          <ul class="space-y-4">
+          <h2 class="text-2xl font-semibold mb-4 border-b dark:border-slate-600 pb-1 dark:text-white">Publications</h2>
+          <div class="grid gap-3">
             {media.map((item) => (
-              <li>
-                <p class="font-medium text-gray-900 dark:text-gray-100">{item.title}</p>
-                <ul class="list-disc list-inside mt-2 space-y-1 text-sm break-all">
+              <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-700/40 p-4 sm:p-5">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${typeStyles[item.type]}`}>{item.type}</span>
+                </div>
+                <p class="font-medium text-gray-900 dark:text-gray-100 mb-3 text-pretty">{item.title}</p>
+                <div class="flex flex-wrap gap-2">
                   {item.links.map((link) => (
-                    <li class="dark:text-gray-400">
-                      <a href={link} class="text-blue-600 dark:text-blue-400 underline" target="_blank" rel="noopener noreferrer">
-                        {link}
-                      </a>
-                    </li>
+                    <a href={link.url} class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-600/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-500 transition-colors" target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                      <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
                   ))}
-                </ul>
-              </li>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
         <section>
